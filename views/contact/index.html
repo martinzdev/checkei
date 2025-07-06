@@ -6,23 +6,23 @@
   <title>Contato - CHECKEI | Entre em contato conosco</title>
   <meta name="description" content="Entre em contato com a equipe do CHECKEI. Tire suas dúvidas, envie sugestões ou solicite suporte para nossa plataforma de organização pessoal.">
   
-  <link rel="icon" type="image/svg+xml" href="../../assets/svg/logo-icon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/svg/logo-simple.svg">
+  <link rel="icon" type="image/svg+xml" href="./../../assets/svg/logo-icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./../../assets/svg/logo-simple.svg">
   <meta name="theme-color" content="#ff6b35">
   
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../../assets/css/main.css">
-  <link rel="stylesheet" href="../../assets/css/components.css">
-  <link rel="stylesheet" href="../../assets/css/animations.css">
-  <link rel="stylesheet" href="../../assets/css/navbar.css">
+  <link rel="stylesheet" href="./../../assets/css/main.css">
+  <link rel="stylesheet" href="./../../assets/css/components.css">
+  <link rel="stylesheet" href="./../../assets/css/animations.css">
+  <link rel="stylesheet" href="./../../assets/css/navbar.css">
 </head>
 <body x-data="initNavbar()">
   <nav class="navbar">
     <div class="container">
       <div class="navbar-container">
         <a href="#" class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
-          <img src="../../assets/svg/logo-simple.svg" alt="CHECKEI" width="32" height="32">
+          <img src="./../../assets/svg/logo-simple.svg" alt="CHECKEI" width="32" height="32">
           <span>CHECKEI</span>
         </a>
         
@@ -37,10 +37,10 @@
         </button>
         
         <ul class="navbar-nav" x-show="!mobileMenuOpen" style="display: flex;">
-          <li><a href="../../">HOME</a></li>
-          <li><a href="../../views/about">SOBRE</a></li>
-          <li><a href="../../views/contact" class="active">CONTATO</a></li>
-          <li><a href="../../views/app">ACESSAR APP</a></li>
+          <li><a href="./../../">HOME</a></li>
+          <li><a href="./../../views/about">SOBRE</a></li>
+          <li><a href="./../../views/contact" class="active">CONTATO</a></li>
+          <li><a href="./../../views/app">ACESSAR APP</a></li>
         </ul>
         
         <div 
@@ -65,16 +65,16 @@
           @click.away="mobileMenuOpen = false"
           style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-top: 1px solid #e5e7eb; z-index: 1000;">
           <li style="border-bottom: 1px solid #e5e7eb;">
-            <a href="../../"	 style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">HOME</a>
+            <a href="./../../"	 style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">HOME</a>
           </li>
           <li style="border-bottom: 1px solid #e5e7eb;">
-            <a href="../../views/about" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">SOBRE</a>
+            <a href="./../../views/about" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">SOBRE</a>
           </li>
           <li>
-            <a href="../../views/contact" class="active" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">CONTATO</a>
+            <a href="./../../views/contact" class="active" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">CONTATO</a>
           </li>
           <li>
-            <a href="../../views/app" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">ACESSAR APP</a>
+            <a href="./../../views/app" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">ACESSAR APP</a>
           </li>
         </ul>
       </div>
@@ -260,8 +260,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <a href="../../" class="footer-logo" style="display: flex; align-items: center; gap: 8px;">
-          <img src="../../assets/svg/logo-icon.svg" alt="CHECKEI" width="24" height="24">
+        <a href="./../../" class="footer-logo" style="display: flex; align-items: center; gap: 8px;">
+          <img src="./../../assets/svg/logo-icon.svg" alt="CHECKEI" width="24" height="24">
           <span>CHECKEI</span>
         </a>
         <div class="text-center">
@@ -271,7 +271,7 @@
     </div>
   </footer>
 
-  <script src="../../assets/js/navbar.js"></script>
-  <script src="contact.js"></script>
+  <script src="./../../assets/js/navbar.js"></script>
+  <script src="./contact.js"></script>
 </body>
 </html>
