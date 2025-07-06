@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHECKEI - Organize sua vida GRÁTIS | Transforme o caos em produtividade</title>
+  <meta name="description" content="Pare de esquecer compromissos e organize sua vida de forma simples e gratuita. Milhares de pessoas já transformaram seus hábitos com o CHECKEI.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/svg/logo-icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/svg/logo-simple.svg">
+  <meta name="theme-color" content="#ff6b35">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+</head>
+<body x-data="initNavbar()">
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="#" class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
+          <img src="assets/svg/logo-simple.svg" alt="CHECKEI" width="32" height="32">
+          <span>CHECKEI</span>
+        </a>
+        
+        <button 
+          @click="toggleMobileMenu()" 
+          class="navbar-toggle"
+          :aria-expanded="mobileMenuOpen"
+          aria-label="Toggle navigation menu"
+          style="display: none; background: none; border: none; color: #1a1f36; font-size: 1.5rem; cursor: pointer; padding: 0.5rem;">
+          <i class="fas fa-bars" x-show="!mobileMenuOpen"></i>
+          <i class="fas fa-times" x-show="mobileMenuOpen"></i>
+        </button>
+        
+        <ul class="navbar-nav" x-show="!mobileMenuOpen" style="display: flex;">
+          <li><a href="#" class="active">HOME</a></li>
+          <li><a href="views/about">SOBRE</a></li>
+          <li><a href="views/contact">CONTATO</a></li>
+          <li><a href="views/app">ACESSAR APP</a></li>
+        </ul>
+        
+        <div 
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          @click="closeMobileMenu()"
+          class="menu-overlay"
+          style="display: none;">
+        </div>
+        
+        <ul 
+          class="navbar-nav-mobile" 
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          @click.away="mobileMenuOpen = false"
+          style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-top: 1px solid #e5e7eb; z-index: 1000;">
+          <li style="border-bottom: 1px solid #e5e7eb;">
+            <a href="#" class="active" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">HOME</a>
+          </li>
+          <li style="border-bottom: 1px solid #e5e7eb;">
+            <a href="views/about" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">SOBRE</a>
+          </li>
+          <li>
+            <a href="views/contact" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">CONTATO</a>
+          </li>
+          <li>
+            <a href="views/app" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">ACESSAR APP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="animation: fadeInUp 0.8s ease-out forwards;">
+    <section class="hero">
+      <div class="text-center">
+        <div style="margin-bottom: 2rem">
+          <img src="assets/svg/logo.svg" alt="CHECKEI Logo" width="80" height="80" style="margin: 0 auto; display: block; filter: drop-shadow(0 4px 8px rgba(255, 107, 53, 0.2));">
+        </div>
+        <h1 class="hero-title">
+          Transforme o <span class="text-primary">CAOS</span> em <span class="text-primary">PRODUTIVIDADE</span>
+        </h1>
+        <p class="hero-subtitle">
+          Pare de esquecer compromissos, criar hábitos saudáveis e organize sua vida em minutos.<br>
+          <strong>100% GRATUITO</strong> • Sem cartão de crédito • Sem pegadinhas
+        </p>
+        <div class="mt-4 mb-4">
+          <a href="views/app" class="btn btn-primary" style="font-size: 1.125rem; padding-left: 2.5rem; padding-right: 2.5rem;">
+            <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>COMEÇAR AGORA
+          </a>
+          <p class="text-muted mt-3" style="font-size: 0.875rem;">
+            <i class="fas fa-check-circle text-success" style="margin-right: 0.25rem;"></i>Pronto em menos de 30 segundos • <i class="fas fa-check-circle text-success" style="margin-right: 0.25rem;"></i>Sem instalação necessária
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section text-center">
+      <h2 class="section-title"><i class="fas fa-bullseye" style="margin-right: 0.5rem;"></i>Por que usar o CHECKEI?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+          <h3 class="feature-title">100% Gratuito</h3>
+          <p class="feature-description">Todas as funcionalidades essenciais são gratuitas. Sem limites, sem pegadinhas, sem surpresas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="feature-title">Funciona em qualquer lugar</h3>
+          <p class="feature-description">Acesse do seu celular, tablet ou computador. Suas tarefas sempre sincronizadas e disponíveis.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="feature-title">Seguro e Confiável</h3>
+          <p class="feature-description">Seus dados são protegidos com tecnologia de ponta. Privacidade e segurança são nossas prioridades.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="text-center mb-8">
+        <h2 class="section-title">
+          <i class="fas fa-cog" style="margin-right: 0.5rem;"></i>
+          Como funciona? (É mais fácil do que você imagina)
+        </h2>
+        <p class="text-muted" style="font-size: 1.125rem; margin-top: 1rem;">
+          Em menos de 30 segundos você estará organizando sua vida
+        </p>
+      </div>
+      
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <h3 class="process-title">
+            <i class="fas fa-mouse-pointer" style="margin-right: 0.5rem; color: var(--color-primary);"></i>
+            Clique e comece
+          </h3>
+          <p class="process-description">
+            Sem cadastros complexos ou formulários longos. Um clique e você já está organizando sua vida. 
+            <strong>Zero burocracia, 100% produtividade.</strong>
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <h3 class="process-title">
+            <i class="fas fa-plus-circle" style="margin-right: 0.5rem; color: var(--color-primary);"></i>
+            Adicione suas tarefas
+          </h3>
+          <p class="process-description">
+            Digite o que precisa fazer. Simples assim. Sem complicações, configurações ou menus confusos. 
+            <strong>Interface intuitiva que qualquer pessoa entende.</strong>
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <h3 class="process-title">
+            <i class="fas fa-heart" style="margin-right: 0.5rem; color: var(--color-primary);"></i>
+            Viva organizado
+          </h3>
+          <p class="process-description">
+            Marque como concluído e sinta a satisfação de ter controle total da sua vida. 
+            <strong>Transforme o caos em produtividade, um dia de cada vez.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="cta-section">
+      <h2 class="cta-title" style="color: #1a1f36;">Organize sua vida em poucos segundos</h2>
+      <p class="cta-description" style="color: #2d3748;">
+        Junte-se a <span style="color: #fff; font-weight: 600; text-shadow: 0 1px 8px rgba(255,107,53,0.15);">milhares de pessoas</span> que já transformaram seus hábitos.<br>
+        <strong style="color: #fff; text-shadow: 0 1px 8px rgba(255,107,53,0.15);">É gratuito. É simples. É agora.</strong>
+      </p>
+      <p style="color: #fff; font-size: 0.95rem; margin-top: 1rem; opacity: 0.92; text-shadow: 0 1px 8px rgba(255,107,53,0.10);">
+        <i class="fas fa-check-circle" style="margin-right: 0.25rem; color: #ffffff;"></i>
+        <span style="color: #fff;">Sem cartão de crédito</span> • 
+        <i class="fas fa-check-circle" style="margin-right: 0.25rem; color: #ffffff;"></i>
+        <span style="color: #fff;">Sem spam</span> • 
+        <i class="fas fa-check-circle" style="margin-right: 0.25rem; color: #ffffff;"></i>
+        <span style="color: #fff;">Sem pegadinhas</span>
+      </p>
+    </div>
+
+
+
+    <section class="section gradient-bg text-center">
+      <h2 class="section-title">Veja como é simples</h2>
+      <p class="section-description">Interface limpa e intuitiva, projetada para máxima produtividade</p>
+      <div class="feature-card" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+        <img src="assets/images/preview.png" alt="Preview do CHECKEI - Interface limpa e intuitiva" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin-bottom: 1.5rem;">
+        <div style="margin-top: 1.5rem;">
+          <a href="views/app" class="btn btn-primary btn-lg">
+            <i class="fas fa-play" style="margin-right: 0.5rem;"></i>EXPERIMENTAR AGORA
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section text-center">
+      <div class="card" style="border-top: 4px solid #f59e0b; background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);">
+        <div class="card-body">
+          <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+            <span class="badge badge-success">Sistema Online</span>
+            <span class="badge badge-primary">Gratuito</span>
+            <span class="badge badge-secondary">Sem Instalação</span>
+          </div>
+          <h3 style="color: #d97706; margin-bottom: 1rem;"><i class="fas fa-clock" style="margin-right: 0.5rem;"></i>Cada dia que você adia é uma oportunidade perdida</h3>
+          <p style="color: #92400e;">
+            Enquanto você pensa, outras pessoas já estão organizando suas vidas e conquistando seus objetivos.<br>
+            <strong>Não deixe para amanhã o que pode transformar sua vida hoje.</strong>
+          </p>
+ 
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="footer-logo" style="display: flex; align-items: center; gap: 8px;">
+          <img src="assets/svg/logo-icon.svg" alt="CHECKEI" width="24" height="24">
+          <span>CHECKEI</span>
+        </a>
+        <div class="text-center">
+          <p style="font-size: 0.75rem; color: #8898aa;">Desenvolvido para fins educacionais - Unicesumar</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>

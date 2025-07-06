@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - CHECKEI | Plataforma Acadêmica de Organização</title>
+  <meta name="description" content="Conheça a história e missão por trás do CHECKEI - uma plataforma de organização pessoal desenvolvida com propósito acadêmico e foco na experiência do usuário.">
+  
+  <link rel="icon" type="image/svg+xml" href="../../assets/svg/logo-icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/svg/logo-simple.svg">
+  <meta name="theme-color" content="#ff6b35">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/navbar.css">
+</head>
+<body x-data="initNavbar()">
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="#" class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
+          <img src="../../assets/svg/logo-simple.svg" alt="CHECKEI" width="32" height="32">
+          <span>CHECKEI</span>
+        </a>
+        
+        <button 
+          @click="toggleMobileMenu()" 
+          class="navbar-toggle"
+          :aria-expanded="mobileMenuOpen"
+          aria-label="Toggle navigation menu"
+          style="display: none; background: none; border: none; color: #1a1f36; font-size: 1.5rem; cursor: pointer; padding: 0.5rem;">
+          <i class="fas fa-bars" x-show="!mobileMenuOpen"></i>
+          <i class="fas fa-times" x-show="mobileMenuOpen"></i>
+        </button>
+        
+        <ul class="navbar-nav" x-show="!mobileMenuOpen" style="display: flex;">
+          <li><a href="../../">HOME</a></li>
+          <li><a href="../../views/about" class="active">SOBRE</a></li>
+          <li><a href="../../views/contact">CONTATO</a></li>
+          <li><a href="../../views/app">ACESSAR APP</a></li>
+        </ul>
+        
+        <div 
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          @click="closeMobileMenu()"
+          class="menu-overlay"
+          style="display: none;">
+        </div>
+        
+        <ul 
+          class="navbar-nav-mobile" 
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          @click.away="mobileMenuOpen = false"
+          style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-top: 1px solid #e5e7eb; z-index: 1000;">
+          <li style="border-bottom: 1px solid #e5e7eb;">
+            <a href="../../" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">HOME</a>
+          </li>
+          <li style="border-bottom: 1px solid #e5e7eb;">
+            <a href="../../views/about" class="active" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">SOBRE</a>
+          </li>
+          <li>
+            <a href="../../views/contact" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">CONTATO</a>
+          </li>
+          <li>
+            <a href="../../views/app" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">ACESSAR APP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="animation: fadeInUp 0.8s ease-out forwards;">
+    <section class="hero">
+      <div class="text-center">
+        <div style="margin-bottom: 2rem;">
+          <img src="../../assets/svg/logo-alt.svg" alt="CHECKEI Logo" width="120" height="120" style="margin: 0 auto; display: block; filter: drop-shadow(0 4px 8px rgba(255, 107, 53, 0.15));">
+        </div>
+        <h1 class="hero-title">
+          Sobre o <span class="text-primary">CHECKEI</span>
+        </h1>
+        <p class="hero-subtitle">
+          Uma plataforma de organização pessoal nascida no ambiente acadêmico,<br>
+          desenvolvida com foco na simplicidade e eficiência.
+        </p>
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="card" style="background: linear-gradient(135deg, #fff8f5 0%, #ffffff 100%)">
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <h2 class="section-title text-primary"><i class="fas fa-target" style="margin-right: 0.5rem;"></i>Nossa Missão & Origem</h2>
+            <p class="hero-description">
+              O CHECKEI foi criado com o objetivo de democratizar o acesso a ferramentas de organização pessoal, 
+              oferecendo uma solução simples, gratuita e eficiente para que qualquer pessoa possa transformar 
+              o caos em produtividade. Nossa missão é ajudar estudantes, profissionais e qualquer pessoa que 
+              busque uma vida mais organizada a alcançar seus objetivos de forma prática e intuitiva.
+            </p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <div>
+              <h3 style="color: #1a1f36; margin-bottom: 1rem;"><i class="fas fa-university" style="margin-right: 0.5rem; color: #ff6b35;"></i>Projeto Universitário</h3>
+              <p>
+                O CHECKEI nasceu como um projeto acadêmico desenvolvido durante o curso de graduação, 
+                com o objetivo de aplicar conhecimentos teóricos em desenvolvimento web em uma solução 
+                prática e útil para a comunidade. Este projeto representa a união entre aprendizado 
+                acadêmico e impacto social positivo.
+              </p>
+            </div>
+            <div>
+              <h3 style="color: #1a1f36; margin-bottom: 1rem;"><i class="fas fa-lightbulb" style="margin-right: 0.5rem; color: #ff6b35;"></i>Propósito Educacional</h3>
+              <p>
+                Além de ser uma ferramenta funcional, o CHECKEI serve como um estudo de caso para 
+                boas práticas em UX/UI, desenvolvimento frontend e design system. Cada decisão 
+                tomada no projeto foi fundamentada em pesquisa acadêmica e princípios de usabilidade.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="margin-top: 5rem;" x-data="{ technologies }">
+      <div class="text-center">
+        <h2 class="section-title"><i class="fas fa-code" style="margin-right: 0.5rem;"></i>Tecnologia & Desenvolvimento</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+          <template x-for="tech in technologies" :key="tech.title">
+            <div class="card" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100">
+              <div class="card-body text-center">
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: #ff6b35;">
+                  <i :class="tech.icon"></i>
+                </div>
+                <h3 style="color: #ff6b35; margin-bottom: 1rem;" x-text="tech.title"></h3>
+                <p x-text="tech.description"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card" style="background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%); color: white; text-align: center;">
+        <div class="card-body">
+          <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;"><i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>Visão de Futuro</h2>
+          <p style="color: rgba(255,255,255,0.9); font-size: 1.125rem; margin-bottom: 2rem;">
+            O que começou como um projeto acadêmico tem o potencial de se tornar uma ferramenta 
+            que impacta positivamente a vida de milhares de pessoas. Continuamos evoluindo, 
+            sempre mantendo nossos valores de simplicidade, gratuidade e foco no usuário.
+          </p>
+          <a href="../../" class="btn btn-secondary btn-lg" style="background: white; color: #ff6b35; border: 2px solid white;">
+            <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>Voltar ao Início
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="../../" class="footer-logo" style="display: flex; align-items: center; gap: 8px;">
+          <img src="../../assets/svg/logo-icon.svg" alt="CHECKEI" width="24" height="24">
+          <span>CHECKEI</span>
+        </a>
+        <div class="text-center">
+          <p style="font-size: 0.75rem; color: #8898aa;">Desenvolvido para fins educacionais - Unicesumar</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="../../assets/js/navbar.js"></script>
+  <script src="about.js"></script>
+</body>
+</html>

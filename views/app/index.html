@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHECKEI - Sua Lista de Tarefas | Organizador Pessoal</title>
+  <meta name="description" content="Gerencie suas tarefas de forma simples e eficiente. Acompanhe seu progresso e mantenha-se produtivo com o CHECKEI.">
+  
+  <!-- Favicon and Icons -->
+  <link rel="icon" type="image/svg+xml" href="../../assets/svg/logo-icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/svg/logo-simple.svg">
+  <meta name="theme-color" content="#ff6b35">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/components-advanced.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/navbar.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body x-data="initNavbar()">
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="#" class="navbar-brand" style="display: flex; align-items: center; gap: 8px;">
+          <img src="../../assets/svg/logo-simple.svg" alt="CHECKEI" width="32" height="32">
+          <span>CHECKEI</span>
+        </a>
+        
+        <button 
+          @click="toggleMobileMenu()" 
+          class="navbar-toggle"
+          :aria-expanded="mobileMenuOpen"
+          aria-label="Toggle navigation menu"
+          style="display: none; background: none; border: none; color: #1a1f36; font-size: 1.5rem; cursor: pointer; padding: 0.5rem;">
+          <i class="fas fa-bars" x-show="!mobileMenuOpen"></i>
+          <i class="fas fa-times" x-show="mobileMenuOpen"></i>
+        </button>
+        
+        <ul class="navbar-nav" x-show="!mobileMenuOpen" style="display: flex;">
+          <li><a href="../../">HOME</a></li>
+          <li><a href="../../views/about">SOBRE</a></li>
+          <li><a href="../../views/contact">CONTATO</a></li>
+          <li><a href="../../views/app" class="active">ACESSAR APP</a></li>
+        </ul>
+        
+        <div 
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          @click="closeMobileMenu()"
+          class="menu-overlay"
+          style="display: none;">
+        </div>
+        
+        <ul 
+          class="navbar-nav-mobile" 
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          @click.away="mobileMenuOpen = false"
+          style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-top: 1px solid #e5e7eb; z-index: 1000;">
+          <li style="border-bottom: 1px solid #e5e7eb;">
+            <a href="../../" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">HOME</a>
+          </li>
+          <li style="border-bottom: 1px solid #e5e7eb;">
+            <a href="../../views/about" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">SOBRE</a>
+          </li>
+          <li>
+            <a href="../../views/contact" style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">CONTATO</a>
+          </li>
+          <li>
+            <a href="../../views/app" class="active"  style="display: block; padding: 1rem; color: #1a1f36; text-decoration: none; transition: all 0.2s ease;" @click="mobileMenuOpen = false">
+              ACESSAR APP
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="animation: fadeInUp 0.8s ease-out forwards;" x-data="initApp()">
+    
+    <section class="hero">
+      <div class="text-center">
+        <div style="margin-bottom: 1.5rem;">
+          <img src="../../assets/svg/logo.svg" alt="CHECKEI Logo" width="64" height="64" style="margin: 0 auto; display: block; filter: drop-shadow(0 4px 8px rgba(255, 107, 53, 0.2));">
+        </div>
+        <h1 class="hero-title" style="font-size: 2.5rem;">
+          Bem-vindo ao <span class="text-primary">CHECKEI</span>
+        </h1>
+        <p class="hero-subtitle">
+          Organize suas tarefas e acompanhe seu progresso diário
+        </p>
+      </div>
+    </section>
+
+    <section class="stats-grid animate-fadeInUp animate-delay-200">
+      <div class="stat-card hover-lift">
+        <div class="stat-number" x-text="stats.totalTasks"></div>
+        <div class="stat-label">Total de Tarefas</div>
+      </div>
+      <div class="stat-card hover-lift">
+        <div class="stat-number" x-text="stats.completedTasks"></div>
+        <div class="stat-label">Tarefas Concluídas</div>
+      </div>
+      <div class="stat-card hover-lift">
+        <div class="stat-number" x-text="stats.streak"></div>
+        <div class="stat-label">Sequência de Dias</div>
+      </div>
+      <div class="stat-card hover-lift">
+        <div class="stat-number" x-text="stats.todayTasks"></div>
+        <div class="stat-label">Tarefas Hoje</div>
+      </div>
+    </section>
+
+    <section class="section animate-fadeInUp animate-delay-400">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+        
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <i class="fas fa-plus-circle" style="margin-right: 0.5rem;"></i>
+              Adicionar Nova Tarefa
+            </h2>
+          </div>
+          <div class="card-body">
+            <form @submit.prevent="addTask()">
+              <div class="form-group">
+                <div class="add-task-form">
+                  <input
+                    type="text"
+                    x-model="newTask"
+                    class="input"
+                    placeholder="Digite sua nova tarefa..."
+                    maxlength="100"
+                    required
+                    @keyup.enter="addTask()"
+                    style="flex: 1;"
+                  >
+                  <button 
+                    type="submit" 
+                    class="btn btn-primary add-task-btn"
+                    :disabled="!newTask.trim()"
+                    :class="{ 'opacity-50': !newTask.trim() }"
+                    style="white-space: nowrap;"
+                  >
+                    <i class="fas fa-plus"></i> Adicionar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="tasks-header-flex">
+              <h2 class="card-title">
+                <i class="fas fa-list-check" style="margin-right: 0.5rem;"></i>
+                Suas Tarefas
+              </h2>
+              <div class="tasks-filters-responsive">
+                <button 
+                  @click="filter = 'all'" 
+                  class="btn btn-sm"
+                  :class="filter === 'all' ? 'btn-primary' : 'btn-secondary'"
+                >
+                  Todas
+                </button>
+                <button 
+                  @click="filter = 'pending'" 
+                  class="btn btn-sm"
+                  :class="filter === 'pending' ? 'btn-primary' : 'btn-secondary'"
+                >
+                  Pendentes
+                </button>
+                <button 
+                  @click="filter = 'completed'" 
+                  class="btn btn-sm"
+                  :class="filter === 'completed' ? 'btn-primary' : 'btn-secondary'"
+                >
+                  Concluídas
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div x-show="filteredTasks.length === 0" class="text-center p-4">
+              <i class="fas fa-clipboard-list" style="font-size: 3rem; color: var(--color-text-muted); margin-bottom: 1rem;"></i>
+              <p class="text-muted">
+                <span x-show="filter === 'all'">Nenhuma tarefa encontrada. Que tal adicionar uma?</span>
+                <span x-show="filter === 'pending'">Nenhuma tarefa pendente. Você está em dia!</span>
+                <span x-show="filter === 'completed'">Nenhuma tarefa concluída ainda.</span>
+              </p>
+            </div>
+
+            <div class="todo-list" x-show="filteredTasks.length > 0">
+              <template x-for="task in filteredTasks" :key="task.id">
+                <div class="todo-item task-item" :class="{ 'completed-animation': task.justCompleted }">
+                  <div 
+                    class="todo-checkbox"
+                    :class="{ 'checked': task.completed }"
+                    @click="toggleTask(task.id)"
+                  ></div>
+                  
+                  <span 
+                    class="todo-text"
+                    :class="{ 'completed': task.completed }"
+                    x-text="task.text"
+                  ></span>
+                  
+                  <div class="todo-actions">
+                    <button 
+                      @click="editTask(task.id)"
+                      class="todo-action-btn edit-btn"
+                      title="Editar tarefa"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button 
+                      @click="deleteTask(task.id)"
+                      class="todo-action-btn delete-btn"
+                      title="Excluir tarefa"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+    <section class="section">
+      <div class="card" style="background: linear-gradient(135deg, var(--color-primary) 0%, #ff8456 100%); color: white; text-align: center;">
+        <div class="card-body">
+          <h2 style="color: white; margin-bottom: 1rem;">
+            <i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>
+            Continue Produtivo!
+          </h2>
+          <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
+            Você completou <span x-text="stats.completedTasks"></span> tarefas até agora. Continue assim!
+          </p>
+          <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <button @click="clearCompleted()" class="btn btn-white">
+              <i class="fas fa-broom" style="margin-right: 0.5rem;"></i>
+              Limpar Concluídas
+            </button>
+            <button @click="exportTasks()" class="btn btn-outline-white">
+              <i class="fas fa-download" style="margin-right: 0.5rem;"></i>
+              Exportar Tarefas
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="../../" class="footer-logo" style="display: flex; align-items: center; gap: 8px;">
+          <img src="../../assets/svg/logo-icon.svg" alt="CHECKEI" width="24" height="24">
+          <span>CHECKEI</span>
+        </a>
+        <div class="text-center">
+          <p style="font-size: 0.75rem; color: #8898aa;">Desenvolvido para fins educacionais - Unicesumar</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/navbar.js"></script>
+  <script src="store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

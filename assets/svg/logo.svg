@@ -1,0 +1,49 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff8456;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8456;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#backgroundGradient)" stroke="url(#primaryGradient)" stroke-width="2"/>
+  
+  <!-- List Lines (representing todo items) -->
+  <rect x="12" y="18" width="16" height="2" rx="1" fill="url(#secondaryGradient)" opacity="0.6"/>
+  <rect x="12" y="24" width="20" height="2" rx="1" fill="url(#secondaryGradient)" opacity="0.4"/>
+  <rect x="12" y="30" width="14" height="2" rx="1" fill="url(#secondaryGradient)" opacity="0.3"/>
+  
+  <!-- Main Check Mark -->
+  <path d="M20 34 L28 42 L44 20" 
+        stroke="url(#primaryGradient)" 
+        stroke-width="4" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <!-- Completed Task Indicator (small circle) -->
+  <circle cx="16" cy="19" r="3" fill="url(#primaryGradient)"/>
+  <path d="M14.5 19 L15.5 20 L17.5 18" 
+        stroke="white" 
+        stroke-width="1.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <!-- Accent Dots -->
+  <circle cx="50" cy="25" r="2" fill="url(#primaryGradient)" opacity="0.6"/>
+  <circle cx="48" cy="45" r="1.5" fill="url(#primaryGradient)" opacity="0.4"/>
+  
+  <!-- Subtle Shadow -->
+  <circle cx="32" cy="34" r="28" fill="none" stroke="#ff6b35" stroke-width="0.5" opacity="0.2"/>
+</svg>
