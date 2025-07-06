@@ -5,6 +5,10 @@
 > **Curso:** Engenharia de Software
 
 ![Preview da Aplicação](assets/images/preview.png)
+![Rascunho da Aplicação 1](assets/images/draft-website-1.png)
+![Rascunho da Aplicação 2](assets/images/draft-website-2.png)
+![Rascunho da Aplicação 3](assets/images/draft-website-3.png)
+![Rascunho da Aplicação 4](assets/images/draft-website-4.png)
 
 ## 📋 Sobre o Projeto
 
